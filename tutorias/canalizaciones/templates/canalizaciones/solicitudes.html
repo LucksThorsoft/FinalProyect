@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Solicitudes</title>
+
+    <!-- Estilos CSS personalizados -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f9fc;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            display: grid;
+            place-items: center;
+            margin: 60px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #4b4b4b;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        /* Estilo de la tabla */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #064a94;
+            color: white;
+            font-size: 16px;
+        }
+
+        td {
+            font-size: 14px;
+            color: #555;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Botón de "Crear Nueva Solicitud" */
+        .btn {
+            background-color: #007bff; /* Azul brillante */
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            display: inline-block;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Botón para Registrar Alumno */
+        .btn-register {
+            color: rgb(21, 20, 20);
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        /* Mensaje de "No hay solicitudes" */
+        .empty-message {
+            text-align: center;
+            font-size: 18px;
+            color: #777;
+            padding: 20px;
+        }
+
+        /* Responsividad */
+        @media (max-width: 768px) {
+            table {
+                font-size: 12px;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Lista de Canalizaciones</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Alumno</th>
+                    <th>Tipo de Canalización</th>
+                    <th>Descripción</th>
+                    <th>Fecha de Creación</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for solicitud in solicitudes %}
+                    <tr>
+                        <td>{{ solicitud.id }}</td>
+                        <td>{{ solicitud.alumno }}</td> <!-- Mostrando el nombre del alumno -->
+                        <td>{{ solicitud.tipo_canalizacion }}</td>
+                        <td>{{ solicitud.descripcion }}</td>
+                        <td>{{ solicitud.fecha_creacion }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5" class="empty-message">No hay solicitudes registradas</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Botones para crear nueva solicitud y registrar alumno -->
+        <a href="{% url 'crear_solicitud' %}" class="btn mb-3">Crear Nueva Solicitud</a>
+        <a href="{% url 'registrar_alumno' %}" class="btn-register">Registrar Alumno</a>
+    </div>
+
+</body>
+</html>

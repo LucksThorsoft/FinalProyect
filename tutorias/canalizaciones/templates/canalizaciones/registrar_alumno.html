@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Nuevo Alumno</title>
+
+    <!-- CSS personalizado -->
+    <style>
+        /* Reset de márgenes y paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f9fc;
+            color: #333;
+            line-height: 1.6;
+            padding: 0 15px;
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 900px;
+            margin: 60px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #4b4b4b;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        /* Contenedor de formulario */
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centra los elementos */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .form-group label {
+            font-size: 16px;
+            color: #555;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #d0d0d0;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            color: #444;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: #eaeaea;
+            outline: none;
+        }
+
+        /* Botón principal */
+        .btn {
+            background-color: #007bff; /* Azul brillante */
+            border: none;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 20px;
+            width: 100%; /* Hace que el botón ocupe el 100% del ancho */
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Botón secundario */
+        .btn-secondary {
+            background-color: #f1f1f1;
+            color: #333;
+            font-size: 16px;
+            padding: 12px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            display: inline-block;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%; /* Hace que el botón ocupe el 100% del ancho */
+        }
+
+        .btn-secondary:hover {
+            background-color: #e4e4e4;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            color: #888;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .footer-text a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .footer-text a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Registrar Nuevo Alumno</h2>
+    
+    <form method="POST" class="form-container">
+        {% csrf_token %}
+        
+        <!-- Mostrar formulario con formato elegante -->
+        <div class="form-group">
+            {{ form.as_p }} <!-- Muestra el formulario de manera organizada -->
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn">Registrar Alumno</button>
+            <!-- Enlace a la lista de alumnos con un diseño agradable -->
+            <a href="{% url 'listar_alumnos' %}" class="btn-secondary">Ver lista de alumnos</a>
+        </div>
+    </form>
+</div>
+
+<!-- Footer con enlace adicional -->
+<div class="footer-text">
+    <p>¿Necesitas ayuda? <a href="#">Contáctanos</a></p>
+</div>
+
+</body>
+</html>

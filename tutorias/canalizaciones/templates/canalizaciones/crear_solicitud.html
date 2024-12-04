@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Nueva Solicitud</title>
+
+    <!-- CSS personalizado -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff; /* Fondo blanco */
+            color: #333;
+            line-height: 1.6;
+            padding: 0 15px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 60px auto;
+            background-color: #fff; /* Fondo blanco */
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+            padding: 40px;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #333; /* Color oscuro para el encabezado */
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 16px;
+            color: #333; /* Color oscuro para las etiquetas */
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #e0e0e0; /* Borde gris claro */
+            border-radius: 8px;
+            background-color: #f7f7f7; /* Fondo gris claro */
+            color: #444;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group select:focus, .form-group textarea:focus {
+            border-color: #ddd; /* Borde gris más oscuro al hacer foco */
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .btn {
+            background-color: #007bff; /* Azul para el botón principal */
+            border: 1px solid #0056b3; /* Borde azul más oscuro */
+            padding: 15px 20px;
+            color: white; /* Texto blanco */
+            text-decoration: none;
+            text-align: center;
+            font-size: 16px;
+            border-radius: 8px;
+            display: inline-block;
+            cursor: pointer;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
+            border-color: #004085; /* Borde aún más oscuro al pasar el mouse */
+        }
+
+        .btn:focus {
+            box-shadow: 0 0 0 4px rgba(38, 143, 255, 0.5); /* Sombra azul suave al hacer foco */
+        }
+
+        .btn.mb-3 {
+            background-color: #17a2b8; /* Azul claro para el segundo botón */
+            border: 1px solid #117a8b; /* Borde azul más oscuro */
+            margin-top: 15px;
+        }
+
+        .btn.mb-3:hover {
+            background-color: #138496; /* Azul más intenso al pasar el mouse */
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .btn-container a {
+            text-decoration: none;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            color: #888;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .footer-text a {
+            color: #333; /* Enlace oscuro */
+            text-decoration: none;
+        }
+
+        .footer-text a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Registrar Nueva Solicitud</h2>
+    
+    <form method="POST" class="form-container">
+        {% csrf_token %}
+        
+        <!-- Campo para seleccionar el alumno -->
+        <div class="form-group">
+            <label for="id_alumno">Alumno</label>
+            {{ form.alumno }} <!-- Esto renderiza el campo de selección del alumno -->
+        </div>
+
+        <!-- Campo para seleccionar el tipo de canalización -->
+        <div class="form-group">
+            <label for="id_tipo_canalizacion">Tipo de Canalización</label>
+            {{ form.tipo_canalizacion }} <!-- Esto renderiza el campo de selección del tipo de canalización -->
+        </div>
+
+        <!-- Campo para la descripción de la solicitud -->
+        <div class="form-group">
+            <label for="id_descripcion">Descripción</label>
+            {{ form.descripcion }} <!-- Esto renderiza el campo de descripción -->
+        </div>
+
+        <div class="btn-container">
+            <button type="submit" class="btn">Registrar Solicitud</button>
+            <a href="{% url 'listar_solicitudes' %}" class="btn mb-3">Ver lista</a>
+        </div>
+    </form>
+</div>
+
+
+
+</body>
+</html>
